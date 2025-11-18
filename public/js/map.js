@@ -11,7 +11,7 @@
 const map = new maplibregl.Map({
   style: "https://tiles.openfreemap.org/styles/liberty",
   center: coordinates,
-  zoom: 8,
+  zoom: 10,
   container: "map",
 });
 

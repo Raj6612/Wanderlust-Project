@@ -76,10 +76,10 @@ module.exports.renderEditForm = async (req, res) => {
   }
 
   let originalImageUrl = listing.image.url;
-  console.log(originalImageUrl);
+  // console.log(originalImageUrl);
   originalImageUrl = originalImageUrl.replace(
-    "/uploads",
-    "/uploads/h_250,w_250"
+    "/upload",
+    "/upload/w_250"
   );
   res.render("listings/edit", { listing, originalImageUrl });
 };
