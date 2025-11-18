@@ -1,7 +1,5 @@
 <% layout("/layouts/boilerplate") %>
 
-
-
 <body>
   <div class="row mt-3">
     <div class="col-8 offset-3">
@@ -119,28 +117,27 @@
       <% } %> <% if (listing.reviews.length > 0) { %>
       <hr />
       <div class="row offset-1">
-        <h2><b class="offset-5">All Reviews</b></h2>
-        <% for (review of listing.reviews) { %>
-        <div class="card col-5 ms-3 mb-3">
-          <div>
-            <h5 class="card-title">@<%= review.author.username %></h5>
-            <p
-              class="starability-result card-text"
-              data-rating="<%= review.rating %>"
-            ></p>
-            <p class="card-test"><%= review.comment %></p>
-            <!-- <p class="card-test"> Stars</p> -->
+        <div class="row">
+          <% for(let review of listing.reviews) { %>
+          <div class="col-12 col-md-6 mb-3">
+            <div class="card h-100 p-3">
+              <h5 class="card-title">@<%= review.author.username %></h5>
+              <p
+                class="starability-result card-text"
+                data-rating="<%= review.rating %>"
+              ></p>
+              <p class="card-text"><%= review.comment %></p>
 
-            <form
-              class="mb-3"
-              method="post"
-              action="/listings/<%= listing.id %>/reviews/<%= review.id %>/?_method=delete"
-            >
-              <button class="btn btn-sm btn-dark">Delete</button>
-            </form>
+              <form
+                method="post"
+                action="/listings/<%= listing.id %>/reviews/<%= review.id %>/?_method=delete"
+              >
+                <button class="btn btn-sm btn-dark">Delete</button>
+              </form>
+            </div>
           </div>
+          <%}%>
         </div>
-        <% } %>
       </div>
       <% } %>
     </div>
@@ -153,7 +150,6 @@
   <script>
     window.coordinates = <%- JSON.stringify(listing.geometry.coordinates) %>;
     // console.log("Coords ready:", window.coordinates);
-  
   </script>
 
   <script src="/js/map.js"></script>
